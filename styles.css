@@ -1,0 +1,514 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 1.6;
+    font-size: 14px;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 64px 30px 30px 30px;
+    border-radius: 8px;
+    max-width: 1000px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.modal-text {
+    padding-right: 20px;
+}
+
+.modal-images {
+    position: relative;
+    height: 500px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.carousel-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.carousel-image.active {
+    opacity: 1;
+}
+
+.carousel-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 2;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: white;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #333;
+    transition: background 0.3s ease;
+}
+
+.carousel-nav:hover {
+    background: white;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #666;
+    z-index: 3;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.close-modal:hover {
+    color: #000;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.project-details h3 {
+    color: #2d3436;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.project-details p {
+    margin-bottom: 15px;
+    color: #636e72;
+}
+
+/* Responsive design for modal */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        grid-template-columns: 1fr;
+        margin: 0;
+        height: 100vh;
+        border-radius: 0;
+    }
+    
+    .modal-images {
+        height: 300px;
+    }
+}
+
+.view-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #6c5ce7;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 80vh; /*
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.video-overlay h1 {
+    color: white;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.video-caption {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.video-caption p {
+    margin: 0;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 2rem; */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+h1 {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #2d3436;
+}
+
+h3 {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #2d3436;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #636e72;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: #6c5ce7;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    margin-bottom: 2rem;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #6c5ce7;
+    border-radius: 50%;
+    top: 20px;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    left: 50%;
+}
+
+.left::after {
+    right: -10px;
+}
+
+.right::after {
+    left: -10px;
+}
+
+.content {
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 33.33%;
+}
+
+.icon img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.icon span {
+    font-size: 2rem; /* For emoji icons */
+    line-height: 1;
+}
+
+.company-logo {
+    width: 100%; /* Will take full width of the icon container */
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #6c5ce7;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-item::after {
+        left: 21px;
+    }
+
+    .right {
+        left: 0;
+    }
+
+    .video-container {
+        padding-bottom: 75%; /* Adjust aspect ratio for mobile */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .video-container {
+        padding-bottom: 100%; /* More square aspect ratio for smaller devices */
+    }
+}
+
+/* Tabs Styles */
+.tabs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.tabs {
+    display: flex;
+    justify-content: left;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    position: relative;
+    color: #636e72;
+    transition: color 0.3s;
+}
+
+.tab-btn:hover {
+    color: #6c5ce7;
+}
+
+.tab-btn.active {
+    color: #6c5ce7;
+    font-weight: 500;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #6c5ce7;
+}
+
+.tab-content {
+    display: none;
+    padding: 0;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.resume-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.resume-column {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resume-column h2 {
+    color: #2d3436;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #6c5ce7;
+}
+
+.resume-section {
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .resume-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .resume-column {
+        padding: 1.5rem;
+    }
+}
+
+/* Ensure Noto Sans for specific text elements */
+p, .subtitle, .content, .resume-section, .timeline-item, .modal-content {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+/* Add styles for modal title */
+.modal h2 {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 500;
+    font-size: 1.75rem;
+    color: #2d3436;
+    margin-bottom: 1.5rem;
+}
+
+.modal h3 {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: #2d3436;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+} 
