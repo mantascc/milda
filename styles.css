@@ -633,4 +633,20 @@ p, .subtitle, .content, .resume-section, .timeline-item, .modal-content {
         padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
     }
+}
+
+/* Footer styles */
+footer {
+    height: 64px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+footer p {
+    color: #636e72;
+    margin: 0;
+    font-size: 0.9rem;
 } 
